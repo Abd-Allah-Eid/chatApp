@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount() {
     const chatManager = new ChatKit.ChatManager({
       instanceLocator,
-      userId: 'abdallah',
+      userId: 'Afifi',
       tokenProvider: new ChatKit.TokenProvider({
         url: tokenUrl
       })
@@ -87,7 +87,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <RoomList subscribeToRoom={this.subscribeToRoom} rooms={[...this.state.joinableRooms,...this.state.joinedRooms]}/>
+        <RoomList roomId={this.state.roomId}subscribeToRoom={this.subscribeToRoom} rooms={[...this.state.joinableRooms,...this.state.joinedRooms]}/>
         <MessageList messages={this.state.messages}/>
         <SendMessageForm sendMessage={this.sendMessage}/>
         <NewRoomForm />
