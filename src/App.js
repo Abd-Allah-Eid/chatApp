@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount() {
     const chatManager = new ChatKit.ChatManager({
       instanceLocator,
-      userId: 'Afifi',
+      userId: 'abdallah',
       tokenProvider: new ChatKit.TokenProvider({
         url: tokenUrl
       })
