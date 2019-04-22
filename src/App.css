@@ -1,5 +1,6 @@
+
 :root {
-  --main-color: #5ea3d0;
+  --main-color:  #bb33ff;
   --secondary-color: white;
   --main-text-color: #3e5869;
   --secondary-text-color: #b0c7d6;
@@ -25,12 +26,12 @@ html, body {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
   grid-template-areas: 
-      "r m m m m m"
-      "r m m m m m"
-      "r m m m m m"
-      "r m m m m m"
-      "r m m m m m"
-      "n f f f f f";
+      "m m m m m r"
+      "m m m m m r"
+      "m m m m m r"
+      "m m m m m r"
+      "m m m m m r"
+      "f f f f f n";
 }
 
 .new-room-form {
@@ -68,7 +69,7 @@ html, body {
   margin: 10px 0;
 }
 
-.rooms-list > h3 {
+.rooms-list  h3 {
   margin: 5px 0;
   color: var(--secondary-color);
 }
@@ -103,7 +104,7 @@ html, body {
 }
 
 .new-room-form button {
-  background: var(--secondary-color);
+  background: #efccff;
   color: var(--main-text-color);
   border: 0;
 } 
@@ -188,3 +189,4 @@ html, body {
   position: absolute;
   top: 10px;
 }
+

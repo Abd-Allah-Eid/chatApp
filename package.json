@@ -2,14 +2,18 @@
   "name": "chatapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://beatheat.github.io/chatApp",
   "dependencies": {
     "@pusher/chatkit-client": "^1.4.1",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
