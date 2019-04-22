@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Beatheat/chatApp/precache-manifest.3d438c28af82d0e8a2ec8c9aa5e0681a.js"
+  "/chatApp/precache-manifest.4eec26cb6b07beb39c9233406526c61f.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Beatheat/chatApp/index.html", {
+workbox.routing.registerNavigationRoute("/chatApp/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
