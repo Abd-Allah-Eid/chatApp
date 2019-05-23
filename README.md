@@ -2,10 +2,10 @@
 Link to Demo App: https://beatheat.github.io/chatApp/
 This is just the preview of the application if you wanna use it functionally you have to follow instructions below!
 
-##Attention!
+## Attention!
 Huge update coming soon!
 
-##Instructions for fully functional usage
+## Instructions for fully functional usage
 To get started, run:
 
 - Run `npm install`
