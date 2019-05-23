@@ -1,5 +1,18 @@
 ## Demo 
 Link to Demo App: https://beatheat.github.io/chatApp/
+This is just the preview of the application if you wanna use it functionally you have to follow instructions below!
+
+##Attention!
+Huge update coming soon!
+
+##Instructions for fully functional usage
+To get started, run:
+
+- Run `npm install`
+- Create a Chatkit application, and copy the Instance Locator and key values into `server.js` and `src/ChatScreen.js`.
+- Create a new room using the Chatkit debug console in the dashboard, and copy it's ID into `src/ChatScreen.js`
+- Run `npm run start`
+- Chat! 
 
 ## Available Scripts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
