@@ -1,115 +1,45 @@
-import React, { Component } from 'react';
-import './App.css';
-import RoomList from './components/RoomList'
-import MessageList from './components/MessageList'
-import SendMessageForm from './components/SendMessageForm'
-import NewRoomForm from './components/NewRoomForm'
-import { tokenUrl, instanceLocator } from './config'
-import ChatKit from '@pusher/chatkit-client'
+import React, { Component } from 'react'
+import UserNameForm from './components/UserNameForm'
+import ChatScreen from './components/ChatScreen'
 
 class App extends Component {
   constructor() {
     super()
-    this.state = {
-      roomId: null,
-      messages: [],
-      joinableRooms: [],
-      joinedRooms: [],
+    this.state= {
+      currentUsername: '',
+      currentScreen: 'WhatIsYourUsernameScreen',
     }
-    this.sendMessage = this.sendMessage.bind(this)
-    this.subscribeToRoom = this.subscribeToRoom.bind(this)
-    this.getRooms = this.getRooms.bind(this)
-    this.createRoom = this.createRoom.bind(this)
+    this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
   }
 
-  componentDidMount() {
-    const chatManager = new ChatKit.ChatManager({
-      instanceLocator,
-      userId: 'abdallah',
-      tokenProvider: new ChatKit.TokenProvider({
-        url: tokenUrl
+  onUsernameSubmitted(username) {
+    fetch('http://localhost:3001/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username }),
+    })
+      .then(response => {
+        this.setState({
+          currentUsername: username,
+          currentScreen: 'ChatScreen',
+        })
       })
-
-    })
-
-    chatManager.connect()
-      .then(currentUser => {
-        this.currentUser = currentUser
-        this.getRooms()
-      })
-      .catch(err => console.log('error on joinableRooms: ', err))
-    
+      .catch(error => console.error('error', error))
   }
 
-  getRooms() {
-    this.currentUser.getJoinableRooms()
-          .then(joinableRooms =>{
-            this.setState({
-              joinableRooms,
-              joinedRooms: this.currentUser.rooms
-            })
-          })
-        .catch(err => console.log('error on joinableRooms: ', err))
-  }
 
-  subscribeToRoom(roomId) {
-    this.setState({
-      messages: []
-    })
-    this.currentUser.subscribeToRoom({
-      roomId: roomId,
-      messageLimit: 20,
-      hooks: {
-        onMessage: message => {
-          // console.log("Received message:", message.text)
-          this.setState({
-            messages: [...this.state.messages, message]
-          })
-        }
-      }
-    })
-    .then(room => {
-      this.setState({
-        roomId: room.id
-      })
-      this.getRooms()
-    })
-    .catch(err => console.log('error on subscribing to room: ',err))
-  }
-  
-
-  sendMessage(text) {
-    this.currentUser.sendMessage({
-      text: text,
-      roomId: this.state.roomId
-    })
-  }
-
-  createRoom(name) {
-    this.currentUser.createRoom({
-      name
-    })
-    .then(room => this.subscribeToRoom(room.id))
-    .catch(err => console.log("error on createRoom",err))
-  }
 
   render() {
-    return (
-      <div className="app">
-        <RoomList roomId={this.state.roomId}subscribeToRoom={this.subscribeToRoom} rooms={[...this.state.joinableRooms,...this.state.joinedRooms]}/>
-        <MessageList 
-          messages={this.state.messages}
-          roomId={this.state.roomId}
-        />
-        <SendMessageForm 
-          sendMessage={this.sendMessage}
-          disabled={!this.state.roomId}
-        />
-        <NewRoomForm createRoom={this.createRoom}/>
-
-      </div>
-    );
+    // return <UsernameForm onSubmit={this.onUsernameSubmitted}/>
+    if (this.state.currentScreen === 'WhatIsYourUsernameScreen') {
+      return <UserNameForm onSubmit={this.onUsernameSubmitted} />
+    }
+    if (this.state.currentScreen === 'ChatScreen') {
+      return <ChatScreen currentUsername={this.state.currentUsername} />
+    }
   }
 }
 
-export default App;
+export default App

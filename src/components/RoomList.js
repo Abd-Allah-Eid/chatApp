@@ -4,7 +4,10 @@ class RoomList extends React.Component {
     
     render(){
         const orderedRooms = [...this.props.rooms].sort((a, b) => a.id - b.id)
-        
+        const loading = "Loading..."
+        while(this.props.loading) {
+            return loading
+        }
         return (
             <div className="rooms-list">
                 <ul>

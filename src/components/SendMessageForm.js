@@ -34,7 +34,7 @@ class SendMessageForm extends React.Component {
             >
                 <input
                     disabled={this.props.disabled}
-                    placeholder="type your message here and press ENTER"
+                    placeholder="Type a message..."
                     type="text"
                     name="textMessage"
                     value={this.state.textMessage}

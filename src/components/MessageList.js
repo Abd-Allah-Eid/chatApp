@@ -12,8 +12,8 @@ class MessageList extends React.Component {
         clientHeight: height of window
         scrollHeight: height of entire element(message list)
         */
-        // console.log(node.scrollTop,node.clientHeight,node.scrollHeight)
-        this.shouldScrollToBottom = node.scrollTop + node.clientHeight + 100 >= node.scrollHeight
+        console.log(node.scrollTop,node.clientHeight,node.scrollHeight)
+        this.shouldScrollToBottom = node.scrollTop + node.clientHeight + 200 >= node.scrollHeight
     }
     componentDidUpdate() {
         if(this.shouldScrollToBottom) {
@@ -28,7 +28,7 @@ class MessageList extends React.Component {
             return (
                 <div className="message-list">
                     <div className="join-room">
-                        &larr; Join a room!
+                         Join a room! &rarr;
                     </div>
                 </div>
             )
