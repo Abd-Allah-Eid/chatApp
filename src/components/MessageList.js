@@ -27,6 +27,7 @@ class MessageList extends React.Component {
         if(!this.props.roomId) {
             return (
                 <div className="message-list">
+                    <h1 className="welcome">Welcome&nbsp;{this.props.username}</h1>
                     <div className="join-room">
                          Join a room! &rarr;
                     </div>

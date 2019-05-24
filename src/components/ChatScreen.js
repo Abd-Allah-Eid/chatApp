@@ -4,23 +4,28 @@ import RoomList from './RoomList'
 import MessageList from './MessageList'
 import SendMessageForm from './SendMessageForm'
 import NewRoomForm from './NewRoomForm'
-import { tokenUrl, instanceLocator } from './../config'
+import TypingIndicator from './TypingIndicator'
+import { tokenUrl, instanceLocator } from '../config'
 import ChatKit from '@pusher/chatkit-client'
 
-class App extends Component {
+class ChatScreen extends Component {
   constructor() {
     super()
     this.state = {
+      currentUser: {},
+      currentRoom: {},
       loading: null,
       roomId: null,
       messages: [],
       joinableRooms: [],
       joinedRooms: [],
+      usersWhoStartedTyping: [],
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.subscribeToRoom = this.subscribeToRoom.bind(this)
     this.getRooms = this.getRooms.bind(this)
     this.createRoom = this.createRoom.bind(this)
+    this.sendTypingEvent = this.sendTypingEvent.bind(this)
   }
 
   componentDidMount() {
@@ -36,6 +41,7 @@ class App extends Component {
 
     chatManager.connect()
       .then(currentUser => {
+        this.setState({currentUser})
         this.currentUser = currentUser
         this.getRooms()
         this.setState({
@@ -62,6 +68,7 @@ class App extends Component {
     this.setState({
       messages: []
     })
+    console.log(this.currentUser)
     this.currentUser.subscribeToRoom({
       roomId: roomId,
       messageLimit: 20,
@@ -71,11 +78,26 @@ class App extends Component {
           this.setState({
             messages: [...this.state.messages, message]
           })
-        }
+        },
+        onUserStartedTyping: user => {
+          // console.log(user.name,'started typing...')
+          this.setState({
+            usersWhoStartedTyping: [...this.state.usersWhoStartedTyping, user.name]
+          })
+        },
+        onUserStoppedTyping: user => {
+          this.setState({
+            usersWhoStartedTyping: this.state.usersWhoStartedTyping.filter(
+              
+              username => username !== user.name
+            )
+          })
+        },
       }
     })
     .then(room => {
       this.setState({
+        currentRoom: room,
         roomId: room.id
       })
       this.getRooms()
@@ -89,6 +111,13 @@ class App extends Component {
       text: text,
       roomId: this.state.roomId
     })
+  }
+
+  sendTypingEvent() {
+    // console.log(this.currentUser)
+    this.currentUser 
+    .isTypingIn({roomId: this.state.roomId})
+    .catch(error => console.error('error',error))
   }
 
   createRoom(name) {
@@ -111,10 +140,13 @@ class App extends Component {
         <MessageList 
           messages={this.state.messages}
           roomId={this.state.roomId}
+          username={this.props.currentUsername}
         />
+        <TypingIndicator TypingUsers={this.state.usersWhoStartedTyping} />
         <SendMessageForm 
           sendMessage={this.sendMessage}
           disabled={!this.state.roomId}
+          onChange={this.sendTypingEvent}
         />
         <NewRoomForm createRoom={this.createRoom}/>
 
@@ -123,4 +155,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ChatScreen;
