@@ -27,7 +27,7 @@ class App extends Component {
     this.setState({loading: true})
     const chatManager = new ChatKit.ChatManager({
       instanceLocator,
-      userId: 'abdallah',
+      userId: this.props.currentUsername,
       tokenProvider: new ChatKit.TokenProvider({
         url: tokenUrl
       })
