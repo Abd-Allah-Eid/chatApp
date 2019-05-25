@@ -141,8 +141,8 @@ class ChatScreen extends Component {
           messages={this.state.messages}
           roomId={this.state.roomId}
           username={this.props.currentUsername}
+          TypingUsers={this.state.usersWhoStartedTyping}
         />
-        <TypingIndicator TypingUsers={this.state.usersWhoStartedTyping} />
         <SendMessageForm 
           sendMessage={this.sendMessage}
           disabled={!this.state.roomId}

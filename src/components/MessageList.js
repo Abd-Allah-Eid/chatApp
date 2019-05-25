@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Message from './Message'
+import TypingIndicator from './TypingIndicator'
 
 
 class MessageList extends React.Component {
@@ -23,7 +24,7 @@ class MessageList extends React.Component {
        
     }
     render() {
-
+        console.log(this.props)
         if(!this.props.roomId) {
             return (
                 <div className="message-list">
@@ -41,6 +42,7 @@ class MessageList extends React.Component {
                         <Message key={index} username={message.senderId} text= {message.text}/>
                     )
                 })}
+                <TypingIndicator  TypingUsers={this.props.TypingUsers}/>
             </div>
         )
     }
