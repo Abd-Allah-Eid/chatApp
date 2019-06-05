@@ -4,6 +4,8 @@ import Message from './Message'
 import TypingIndicator from './TypingIndicator'
 
 
+
+
 class MessageList extends React.Component {
 
     componentWillUpdate() {
@@ -13,37 +15,43 @@ class MessageList extends React.Component {
         clientHeight: height of window
         scrollHeight: height of entire element(message list)
         */
-        console.log(node.scrollTop,node.clientHeight,node.scrollHeight)
+        // console.log(node.scrollTop, node.clientHeight, node.scrollHeight)
         this.shouldScrollToBottom = node.scrollTop + node.clientHeight + 200 >= node.scrollHeight
     }
     componentDidUpdate() {
-        if(this.shouldScrollToBottom) {
+        if (this.shouldScrollToBottom) {
             const node = ReactDOM.findDOMNode(this)
             node.scrollTop = node.scrollHeight
         }
-       
+
     }
     render() {
-        console.log(this.props)
-        if(!this.props.roomId) {
+        // console.log(this.props)
+        if (!this.props.roomId) {
             return (
                 <div className="message-list">
                     <h1 className="welcome">Welcome&nbsp;{this.props.username}</h1>
                     <div className="join-room">
-                         Join a room! &rarr;
+                        Join a room! &rarr;
                     </div>
                 </div>
             )
         }
         return (
-            <div className="message-list">
-                {this.props.messages.map((message, index) => {
-                    return (
-                        <Message key={index} username={message.senderId} text= {message.text}/>
-                    )
-                })}
-                <TypingIndicator  TypingUsers={this.props.TypingUsers}/>
-            </div>
+          
+                
+                <div className="message-list">
+                    {this.props.messages.map((message, index) => {
+                        return (
+                            <Message key={index} username={message.senderId} text={message.text} />
+                        )
+                    })}
+                    <TypingIndicator TypingUsers={this.props.TypingUsers} />
+                </div>
+                
+
+          
+
         )
     }
 }

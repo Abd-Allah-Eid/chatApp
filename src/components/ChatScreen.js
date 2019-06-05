@@ -4,7 +4,6 @@ import RoomList from './RoomList'
 import MessageList from './MessageList'
 import SendMessageForm from './SendMessageForm'
 import NewRoomForm from './NewRoomForm'
-import TypingIndicator from './TypingIndicator'
 import { tokenUrl, instanceLocator } from '../config'
 import ChatKit from '@pusher/chatkit-client'
 
@@ -68,7 +67,7 @@ class ChatScreen extends Component {
     this.setState({
       messages: []
     })
-    console.log(this.currentUser)
+    // console.log(this.currentUser)
     this.currentUser.subscribeToRoom({
       roomId: roomId,
       messageLimit: 20,
@@ -93,6 +92,9 @@ class ChatScreen extends Component {
             )
           })
         },
+        onUserLeftRoom: () => this.forceUpdate(),
+        onUserJoinedRoom: () => this.forceUpdate(),
+        onPresenceChanged: () => this.forceUpdate(),
       }
     })
     .then(room => {
@@ -136,12 +138,15 @@ class ChatScreen extends Component {
           roomId={this.state.roomId}
           subscribeToRoom={this.subscribeToRoom} 
           rooms={[...this.state.joinableRooms,...this.state.joinedRooms]}
+          users={this.state.currentRoom.users}
+          currentUser={this.state.currentUser}
         />
         <MessageList 
           messages={this.state.messages}
           roomId={this.state.roomId}
           username={this.props.currentUsername}
           TypingUsers={this.state.usersWhoStartedTyping}
+          users={this.state.currentRoom.users}
         />
         <SendMessageForm 
           sendMessage={this.sendMessage}
