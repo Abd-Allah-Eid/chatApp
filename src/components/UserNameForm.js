@@ -21,16 +21,21 @@ class UserNameForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Home">
         <div>
-          <h2>What is your username?</h2>
-          <form onSubmit={this.onSubmit}>
+          <h2 className="heading">enter your name</h2>
+          <form onSubmit={this.onSubmit} className="username">
             <input
               type="text"
               placeholder="Your name"
               onChange={this.onChange}
+              
             />
-            <input type="submit" />
+            <input type="submit" className="myButton" />
+
+           
+            
+          
           </form>
         </div>
       </div>

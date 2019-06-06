@@ -7,6 +7,47 @@
   --send-message-form: rgb(255, 255, 255);
 }
 
+
+.heading {
+  text-align: center;
+  color: #000000;
+  text-transform: capitalize;
+  font: italic 700 32px Arial, Helvetica, sans-serif;
+}
+.myButton {
+	background-color:#ffbb00;
+	-moz-border-radius:12px;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:22px;
+	padding:4px 11px;
+	text-decoration:none;
+  text-shadow:0px 1px 50px #2f6627;
+  margin: 12px auto;
+  display: block;
+}
+.myButton:hover {
+	background-color:#000000;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+input[type="text"] {
+  width: 60%;
+  display: block;
+  padding: 12px 20px;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 html, body {
   height: 100%;
   margin: 0;
@@ -20,6 +61,14 @@ html, body {
   position: relative;
   top: 60px;
   
+}
+
+.Home {
+  height: 100%;
+  background-image: url(chat.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 #root {
@@ -116,6 +165,8 @@ html, body {
   justify-content: space-between;
   align-items: center;
 }
+
+
 
 .new-room-form input {
   width: 135px;
