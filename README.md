@@ -1,5 +1,6 @@
 ## Demo 
 - App Demo: https://beatheat.github.io/chatApp/
+![](chatUs.gif)
 - This is just the front page of the application, follow the instructions below to run it functionally. 
 
 ## Instructions for fully functional usage
