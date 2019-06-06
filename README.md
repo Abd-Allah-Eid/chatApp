@@ -1,6 +1,6 @@
 ## Demo 
-App Demo: https://beatheat.github.io/chatApp/
-This is just the front page of the application, follow the instructions below to run it functionally. 
+- App Demo: https://beatheat.github.io/chatApp/
+- This is just the front page of the application, follow the instructions below to run it functionally. 
 
 ## Instructions for fully functional usage
 To get started, run:
@@ -13,8 +13,8 @@ To get started, run:
 
 ## App Usage & Features
 After running the project successfully-> here's how the application works
--Just Enter Your name and it will create a new user using the name you provided so you can chat with it.
--The next time you visit the app just enter the same username.
+- Just Enter Your name and it will create a new user using the name you provided so you can chat with it.
+- The next time you visit the app just enter the same username.
 
 ### Main features
 -You can create & join a chatroom.
