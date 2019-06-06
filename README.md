@@ -17,9 +17,9 @@ After running the project successfully-> here's how the application works
 - The next time you visit the app just enter the same username.
 
 ### Main features
--You can create & join a chatroom.
--A user typing indicator when a room member start typing.
--A list for all users in the room indicates who's online/offline.
+- You can create & join a chatroom.
+- A user typing indicator when a room member start typing.
+- A list for all users in the room indicates who's online/offline.
 
 ## Available Scripts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
