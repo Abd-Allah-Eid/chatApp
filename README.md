@@ -1,9 +1,6 @@
 ## Demo 
-Link to Demo App: https://beatheat.github.io/chatApp/
-This is just the preview of the application if you wanna use it functionally you have to follow instructions below!
-
-## Attention!
-Huge update coming soon!
+App Demo: https://beatheat.github.io/chatApp/
+This is just the front page of the application, follow the instructions below to run it functionally. 
 
 ## Instructions for fully functional usage
 To get started, run:
@@ -14,12 +11,21 @@ To get started, run:
 - Run `npm run start`
 - Chat! 
 
+## App Usage & Features
+After running the project successfully-> here's how the application works
+-Just Enter Your name and it will create a new user using the name you provided so you can chat with it.
+-The next time you visit the app just enter the same username.
+
+### Main features
+-You can create & join a chatroom.
+-A user typing indicator when a room member start typing.
+-A list for all users in the room indicates who's online/offline.
+
 ## Available Scripts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 In the project directory, you can run:
 
-## App Features
-Soon!
+
 
 ### `npm start`
 
