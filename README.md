@@ -1,7 +1,7 @@
 ## Demo
 ![](chatUs.gif)
 
-- App Demo: https://beatheat.github.io/chatApp/
+- App Demo: https://abd-allah-eid.github.io/chatApp/
 - This is just the front page of the application, follow the instructions below to run it functionally. 
 
 ## Instructions for fully functional usage
